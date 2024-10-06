@@ -1,1 +1,250 @@
-/* You can add global styles to this file, and also import other style files */
+// Variables de color y tipografía
+$primary-color: #003844; // Color principal basado en la identidad visual de GI2T
+$secondary-color: #00cc99;
+$background-color: #f0f0f0;
+$text-color: #333;
+$font-family: 'Arial', sans-serif;
+
+// Estilos generales
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: $font-family;
+    background-color: $background-color;
+    color: $text-color;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+// Encabezado (Header) con imagen de fondo y gradiente
+header {
+    background: linear-gradient(
+        rgba(0, 102, 153, 0.3),  // Color primario con opacidad (30%)
+        rgba(0, 100, 88, 0.3)   // Color secundario con opacidad (30%)
+    ),
+    url('../src/assets/IMG/litoral.jpg');  // Ruta correcta si la imagen está en la carpeta public
+    background-size: cover;   // Para que la imagen cubra el espacio completo del header
+    background-position: center; // Centra la imagen
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    height: 420px;  // Altura del header
+
+    nav {
+        ul {
+            list-style: none;
+
+            li {
+                display: inline-block;
+                margin: 0 15px;
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+
+    // Imagen destacada dentro del header (si es necesario)
+    .imagen-destacada {
+        position: relative;
+        overflow: hidden;
+        margin-top: 20px;
+        text-align: center;
+
+        img {
+            max-width: 60%;   // Ajuste de tamaño para que la imagen no ocupe todo el ancho
+            height: auto;
+            border-radius: 15px; // Suaviza los bordes de la imagen
+            -webkit-mask-image: radial-gradient(circle, white 80%, transparent 100%);
+            mask-image: radial-gradient(circle, white 80%, transparent 100%);
+        }
+    }
+}
+
+// Secciones generales
+section {
+    padding: 60px 0;
+    text-align: center;
+
+    h1, h2 {
+        color: $primary-color;
+        margin-bottom: 20px;
+    }
+
+    p {
+        max-width: 800px;
+        margin: 0 auto 30px;
+    }
+}
+
+// Estilos de la sección de Introducción
+#inicio {
+    background-color: $secondary-color;
+    color: white;
+
+    h1 {
+        font-size: 2.5em;
+    }
+}
+
+// Estilos de la sección de Objetivo
+#objetivo {
+    background-color: white;
+
+    p {
+        font-size: 1.2em;
+        color: $text-color;
+    }
+}
+
+// Estilos de la sección de Metodología
+#metodologia {
+    background-color: $background-color;
+
+    img {
+        max-width: 60%;
+        margin-top: 20px;
+    }
+}
+
+// Estilos de la sección de Logros Alcanzados
+#logros {
+    background-color: white;
+
+    .logros-graficos {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+
+// Estilos de la sección de Cifras Relevantes
+#cifras {
+    background-color: $background-color;
+    
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+
+        li {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            flex-basis: 30%;
+        }
+    }
+
+    .graficos-cifras {
+        margin-top: 20px;
+    }
+}
+
+// Estilos de la sección de Contacto
+#contacto {
+    background-color: white;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+        margin: 0 auto;
+
+        label {
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid $primary-color;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: $primary-color;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $secondary-color;
+            }
+        }
+    }
+
+    .datos-contacto {
+        margin-top: 20px;
+    }
+}
+
+// Footer
+footer {
+    background-color: $primary-color;
+    color: white;
+    padding: 20px;
+    text-align: center;
+
+    .logos {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+
+        img {
+            margin: 0 15px;
+            height: 50px;
+        }
+    }
+
+    .enlaces-interes {
+        a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+
+    p {
+        margin-top: 10px;
+    }
+}
+
+// Estilos responsivos para dispositivos móviles
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .logros-graficos, ul {
+        flex-direction: column;
+    }
+
+    .logos {
+        flex-direction: column;
+
+        img {
+            margin: 10px 0;
+        }
+    }
+}
