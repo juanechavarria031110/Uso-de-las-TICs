@@ -26,7 +26,7 @@ header {
         rgba(0, 102, 153, 0.3),  // Color primario con opacidad (30%)
         rgba(0, 100, 88, 0.3)   // Color secundario con opacidad (30%)
     ),
-    url('../src/assets/IMG/litoral.jpg');  // Ruta correcta si la imagen está en la carpeta public
+    url('../src/assets/IMG/ballena.jpeg');  // Ruta correcta si la imagen está en la carpeta public
     background-size: cover;   // Para que la imagen cubra el espacio completo del header
     background-position: center; // Centra la imagen
     padding: 20px;
