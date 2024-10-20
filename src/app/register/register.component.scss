@@ -1,0 +1,227 @@
+$primary-color: #003844; // Color principal basado en la identidad visual de GI2T
+$secondary-color: #00cc99;
+$background-color: #f0f0f0;
+$text-color: #333;
+$font-family: 'Arial', sans-serif;
+
+:root {
+    --colorTextos: #49454567;
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    background: linear-gradient(to right, hsla(211, 30%, 24%, 0.705), hsla(204, 8%, 76%, 0.705)), url(/fondos.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;  // Distribuye el logo y el menú a los lados opuestos
+    align-items: center;             // Centra verticalmente el logo y el menú
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    z-index: 10;                     // Asegura que el header esté en frente del contenido
+}
+
+#logo {
+    position: relative;             // Mantén el logo dentro del flujo normal
+    right: 75%;                        // Logo a la izquierda
+    top: -270px;
+}
+
+#logo img {
+    height: 75px;                   // Ajusta el tamaño del logo
+    width: auto;
+    cursor: pointer;                // Cambia el cursor para indicar que es clickeable
+}
+
+#menu {
+    position: relative;             // Usa relative para el menú
+    left: 75%;                       // Menú a la derecha
+    top: -280px;
+}
+
+#menu ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+#menu ul li {
+    margin-left: 20px;              // Espacio entre los enlaces de navegación
+}
+
+#menu ul li a {
+    text-decoration: none;
+    color: white;                   // Estilo de los enlaces del menú
+    font-weight: bold;
+    padding: 10px 15px;             // Aumenta el área clickeable
+    display: inline-block;          // Asegura que el área clickeable cubra todo el enlace
+}
+
+#menu ul li a:hover {
+    text-decoration: underline;
+    color: #00cc99;                 // Cambia el color al pasar sobre los enlaces
+}
+
+h1 {
+    text-align: center;
+    font-weight: 100;
+}
+
+form {
+    background: #fff;
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;                // Centra el formulario horizontalmente
+    position: absolute;            // Cambia la posición para centrar en la página
+    top: 50%;                      // Posición vertical al 50%
+    left: 50%;                     // Posición horizontal al 50%
+    transform: translate(-50%, -50%); // Ajusta el formulario para centrarlo en ambos ejes
+}
+
+.form {
+    width: 100%;
+    margin: auto;
+}
+
+form .grupo {
+    position: relative;
+    margin: 30px;
+}
+
+input {
+    background: none;
+    color: #c6c6c6;
+    font-size: 16px;
+    padding: 10px 10px 16px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+}
+
+input:focus {
+    outline: none;
+    color: #5e5d5d;
+}
+
+label {
+    color: var(--colorTextos);
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+
+input:focus ~ label, input:valid ~ label {
+    top: -14px;
+    font-size: 12px;
+    color: #2196f3;
+}
+
+.barra {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.barra::before {
+    content: "";
+    height: 2px;
+    width: 0%;
+    position: absolute;
+    background: linear-gradient(to right, #7affd7, #a8ff7a);
+    transition: 1s ease width;
+    left: 0;
+}
+
+input:focus ~ .barra::before {
+    width: 100%;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    background: linear-gradient(to right, hsla(211, 30%, 24%, 0.705), hsla(204, 8%, 76%, 0.705)), url(/litoral.jpg);
+    border: none;
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    color: #fff;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+nav {
+    position: absolute;
+    left: 55%;
+    top: -2%;
+    padding: 30px 50px 0 0;
+}
+
+nav > a {
+    color: white;
+    font-weight: 300;
+    text-decoration: none;
+    margin-right: 1px;
+}
+
+nav > a:hover {
+    text-decoration: underline;
+    color: #000;
+    font-weight: bold;
+}
+
+.warnings {
+    width: 300px;
+    text-align: center;
+    margin: auto;
+    color: #B06AB3;
+    padding-top: -20px;
+}
+
+.account-text {
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    color: var(--colorTextos);
+    font-size: 16px;
+    margin-top: 20px;
+    font-weight: 300;
+}
+
+.login-link {
+    color: #2196f3;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+
+    &:hover {
+        color: #000;
+        text-decoration: underline;
+    }
+}

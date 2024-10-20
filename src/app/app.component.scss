@@ -1,0 +1,120 @@
+// Variables de color y tipografía
+$primary-color: #003844; // Color principal basado en la identidad visual de GI2T
+$secondary-color: #00cc99;
+$background-color: #f0f0f0;
+$text-color: #333;
+$font-family: 'Arial', sans-serif;
+
+#menu {
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda y menú centrado */
+    align-items: center;
+    padding: 10px;
+    background-color: #003844; /* Fondo del menú */
+  }
+  
+  #logo {
+    flex: 1; /* El logo ocupa el espacio a la izquierda */
+    
+    a {
+      display: inline-block;
+    }
+  
+    .logo {
+      width: 150px;
+      height: auto;
+      /* Evita que el logo cambie al pasar el puntero */
+      transition: none; 
+      
+    }
+  
+    a:hover {
+      background-color: transparent; /* Evita el cambio de color del fondo */
+    }
+  }
+  
+  ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    display: flex;
+    justify-content: center; /* Centra los enlaces de navegación */
+    margin: 0;
+    padding: 0;
+    flex: 1; /* Los enlaces ocupan el espacio central */
+  }
+  
+  li {
+    margin: 0 10px; /* Espacio entre los enlaces del menú */
+  }
+  
+  a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: #e6f7ff; /* Color del texto */
+    font-size: 15px;
+    padding: 8px 12px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  
+    &:hover {
+      color: #004d66;
+      background-color: #e6f7ff;
+      border-radius: 4px;
+    }
+  }
+  
+  router-outlet {
+    margin-top: 20px; /* Espacio entre el menú de navegación y el contenido */
+  }
+
+  // Footer
+footer {
+  background-color: $primary-color;
+  color: white;
+  padding: 20px;
+  text-align: center;
+
+  .logos {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+
+      img {
+          margin: 0 15px;
+          height: 50px;
+      }
+  }
+
+  .enlaces-interes {
+      a {
+          color: white;
+          margin: 0 10px;
+          text-decoration: none;
+
+          &:hover {
+              color: $secondary-color;
+          }
+      }
+  }
+
+  p {
+      margin-top: 10px;
+  }
+}
+  
+  /* Estilos responsivos para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    #menu {
+      flex-direction: column; /* Alinea los elementos en columnas */
+    }
+  
+    ul {
+      flex-direction: column; /* Los enlaces se colocan verticalmente en pantallas pequeñas */
+      align-items: center;
+    }
+  
+    li {
+      margin: 10px 0;
+    }
+  
+    #logo .logo {
+      width: 120px; /* Ajuste del tamaño del logo en pantallas pequeñas */
+    }
+  }
