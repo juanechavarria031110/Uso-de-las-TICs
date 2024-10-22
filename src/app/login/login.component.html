@@ -1,1 +1,27 @@
 <p>login works!</p>
+
+<body>
+
+    <form method="POST" id="form">
+        <div class="form">
+            <h1>Iniciar Sesión</h1>
+            <div class="grupo">
+                <input type="email" name="correo" id="email" placeholder="Ingrese su correo electrónico"><span class="barra"></span>
+                <label for="">Correo Electrónico</label>
+            </div>
+            <div class="grupo">
+                <input type="password" name="clave" id="password" placeholder="Ingrese su contraseña"><span class="barra"></span>
+                <label for="">Contraseña</label>
+            </div>
+            <div id="mensaje"></div>
+            <button type="submit" id="Enviar" name="Enviar">Iniciar Sesión</button>
+            <p class="warnings" id="warnings"></p>
+
+            <!-- Enlace al registro -->
+            <p class="account-text">¿No tienes una cuenta? 
+                <a href="/register" class="register-link">Registrarse</a>
+            </p>
+        </div>
+    </form>
+
+</body>
