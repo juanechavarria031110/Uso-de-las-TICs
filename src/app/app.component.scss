@@ -4,6 +4,8 @@ $secondary-color: #00cc99;
 $background-color: #f0f0f0;
 $text-color: #333;
 $font-family: 'Arial', sans-serif;
+$font-color: #fff;
+$highlight-color: #c7c7c7;
 
 #menu {
     display: flex;
@@ -47,16 +49,19 @@ $font-family: 'Arial', sans-serif;
   }
   
   a {
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    color: #e6f7ff; /* Color del texto */
+    display: inline-block;
+    padding: 15px;
+    line-height: normal;
+    text-decoration: none;
+    color: $font-color;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
     font-size: 15px;
-    padding: 8px 12px;
-    transition: color 0.3s ease, background-color 0.3s ease;
+    margin-right: 5px;
   
     &:hover {
-      color: #004d66;
-      background-color: #e6f7ff;
-      border-radius: 4px;
+      border-bottom: 2px solid $highlight-color;
+      padding-bottom: 5px;
     }
   }
   
