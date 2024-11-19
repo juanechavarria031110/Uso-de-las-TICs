@@ -1,39 +1,55 @@
-<!-- Solo muestra el menú si showHeaderFooter es true -->
-<nav id="menu" *ngIf="showHeaderFooter">
-  <div id="logo">
-    <a routerLink="/">
-      <img src="Logo.png" alt="Logo" class="logo"> <!-- Logo de la parte superior izquierda -->
-    </a>
-  </div>
-  <ul>
-    <!-- Enlaces de navegación -->
-    <li>
-      <a routerLink="/">Inicio</a>
-      <a routerLink="/login">Iniciar Sesión</a>
-      <a routerLink="/register">Registrarse</a>
-    </li> 
-  </ul>
-</nav>
-
-<router-outlet></router-outlet>
-
-<!-- Solo muestra el footer si showHeaderFooter es true -->
-<footer *ngIf="showHeaderFooter">
-  <div class="logos">
-    <a href="https://www.gi2t.org" target="_blank">
-      <img src="gI2T.png" alt="Logo GI2T">
-    </a>
-    <a>
-      <img src="ING.png" alt="Logo Ingeniería de Sistemas">
-    </a>
-    <a href="http://www.unipacifico.edu.co" target="_blank">
-      <img src="Uni_pacifico_png.png" alt="Logo Universidad del Pacífico">
-    </a>
-  </div>
-  <div class="enlaces-interes">
-    <a href="https://www.facebook.com">Facebook</a>
-    <a href="https://www.twitter.com">Twitter</a>
-    <a href="https://www.gi2t.org">Sitio Web GI2T</a>
-  </div>
-  <p>Desarrollado por el equipo de Ingeniería de Sistemas, Universidad del Pacífico.</p>
+<!-- Solo muestra el menú si showHeaderFooter es true --> 
+<header id="menu" *ngIf="showHeaderFooter"> 
+  <div id="logo"> 
+    <a routerLink="/"> 
+      <img src="Logo.png" alt="Logo" class="logo"> <!-- Logo de la parte superior izquierda --> 
+    </a> 
+  </div> 
+  <nav> 
+    <ul> 
+      <li> 
+        <a routerLink="/">Inicio</a> 
+        <a routerLink="/login">Iniciar sesión</a> 
+        <a routerLink="/register">Registrarse</a> 
+      </li>  
+    </ul> 
+  </nav> 
+  <div class="btn-menu"> 
+    <label for="btn-menu">☰</label> <!-- Botón para abrir el menú lateral --> 
+  </div> 
+</header> 
+ 
+<router-outlet></router-outlet> 
+ 
+<!-- Menú lateral --> 
+<input type="checkbox" id="btn-menu"> 
+<div class="container-menu"> 
+  <div class="cont-menu"> 
+    <nav> 
+      <a routerLink="/metodologias">Metodologías</a> <!-- Enlace a Metodologías --> 
+      <a routerLink="/encuestas">Encuestas</a> <!-- Enlace a Encuestas --> 
+    </nav> 
+    <label for="btn-menu">✖️</label> <!-- Botón para cerrar el menú lateral --> 
+  </div> 
+</div> 
+ 
+<!-- Solo muestra el footer si showHeaderFooter es true --> 
+<footer *ngIf="showHeaderFooter"> 
+  <div class="logos"> 
+    <a href="https://www.gi2t.org" target="_blank"> 
+      <img src="g.png" alt="Logo GI2T"> 
+    </a> 
+    <a> 
+      <img src="ing.png" alt="Logo Ingeniería de Sistemas"> 
+    </a> 
+    <a href="http://www.unipacifico.edu.co" target="_blank"> 
+      <img src="unpa.png" alt="Logo Universidad del Pacífico"> 
+    </a> 
+  </div> 
+  <div class="enlaces-interes"> 
+    <a href="https://www.facebook.com">Facebook</a> 
+    <a href="https://www.twitter.com">Twitter</a> 
+    <a href="https://www.gi2t.org">Sitio Web GI2T</a> 
+  </div> 
+  <p>Desarrollado por el equipo de Ingeniería de Sistemas, Universidad del Pacífico.</p> 
 </footer>
