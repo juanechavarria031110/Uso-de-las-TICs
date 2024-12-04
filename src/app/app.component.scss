@@ -1,0 +1,239 @@
+$primary-color: #003844; // Color principal basado en la identidad visual de GI2T 
+$secondary-color: #c7c7c7; 
+$background-color: #f0f0f0; 
+$text-color: #333; 
+$font-family: 'Arial', sans-serif; 
+ 
+#menu { 
+  display: flex; 
+  justify-content: space-between; /* Espacio entre logo y menú */ 
+  align-items: center; 
+  padding: 10px; 
+  background-color: $primary-color; /* Fondo del menú */ 
+ 
+  #logo { 
+    flex: 0 0 auto; /* Evita que el logo crezca o se encoja */ 
+    margin-right: 20px; /* Espacio a la derecha del logo */ 
+ 
+    .logo { 
+      width: 150px; /* Tamaño del logo */ 
+      height: auto; 
+      transition: none; // Evita que el logo cambie al pasar el puntero 
+      position: relative; 
+      right: -20px; 
+    } 
+  } 
+ 
+  nav { 
+    flex: 1; /* Permite que el menú use el espacio restante */ 
+ 
+    ul { 
+      list-style: none; /* Elimina los puntos de la lista */ 
+      display: flex; 
+      justify-content: center; /* Centra los enlaces de navegación */ 
+      margin: 0; 
+      padding: 0; 
+ 
+      li { 
+        margin: 0 15px; /* Aumenta el espacio entre los enlaces del menú */ 
+      } 
+ 
+      a { 
+        display: inline-block; 
+        padding: 15px; 
+        text-decoration: none; 
+        color: #fff; 
+        transition: all 0.3s ease; 
+        border-bottom: 2px solid transparent; 
+        font-size: 15px; 
+        margin-right: 5px; 
+        position: relative; 
+        right: -300px; 
+ 
+        &:hover { 
+          border-bottom: 2px solid #c7c7c7; 
+          padding-bottom: 5px; 
+        } 
+      } 
+    } 
+  } 
+ 
+  .btn-menu { 
+    font-size: 24px; /* Tamaño del botón del menú */ 
+    color: #fff; /* Color del texto del botón */ 
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */ 
+  } 
+} 
+ 
+router-outlet { 
+  margin-top: 20px; /* Espacio entre el menú de navegación y el contenido */ 
+} 
+ 
+// Footer 
+footer { 
+  background-color: $primary-color; 
+  color: white; 
+  padding: 20px; 
+  text-align: center; 
+ 
+  .logos { 
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 20px; 
+ 
+    img { 
+      margin: 0 15px; 
+      height: 70px; /* Aumento de tamaño de los logos (anteriormente 50px) */ 
+      transition: all 0.3s ease; /* Transición suave para el cambio de tamaño */ 
+       
+      &:hover { 
+        transform: scale(1.1); /* Aumento el tamaño al pasar el puntero */ 
+      } 
+    } 
+  } 
+ 
+  .enlaces-interes { 
+    a { 
+      color: white; 
+      margin: 0 10px; 
+      text-decoration: none; 
+ 
+      &:hover { 
+        color: $secondary-color; 
+      } 
+    } 
+  } 
+  p { 
+    margin-top: 10px; 
+  } 
+} 
+ 
+// Menú lateral 
+#btn-menu { 
+  display: none; /* Ocultar el botón por defecto */ 
+} 
+ 
+.container-menu { 
+  position: absolute; 
+  background: rgba(0, 0, 0, 0.5); 
+  width: 100%; 
+  height: 100vh; 
+  top: 0; 
+  left: 0; 
+  transition: all 500ms ease; 
+  opacity: 0; /* Comienza oculto */ 
+  visibility: hidden; /* Comienza oculto */ 
+ 
+  &.open { 
+    opacity: 1; 
+    visibility: visible; 
+  } 
+} 
+ 
+#btn-menu:checked ~ .container-menu { 
+  opacity: 1; /* Muestra el menú lateral */ 
+  visibility: visible; /* Habilita la visibilidad */ 
+} 
+ 
+.cont-menu { 
+  width: 100%; 
+  max-width: 250px; /* Ancho del menú lateral */ 
+  background: #1c1c1c; /* Color de fondo del menú */ 
+  height: 100vh; 
+  position: relative; 
+  transition: all 500ms ease; 
+  transform: translateX(-100%); /* Comienza desplazado hacia la izquierda */ 
+} 
+ 
+#btn-menu:checked ~ .container-menu .cont-menu { 
+  transform: translateX(0%); /* Desplaza el menú hacia la vista */ 
+} 
+ 
+.cont-menu nav { 
+  transform: translateY(15%); /* Desplaza el contenido del menú hacia abajo */ 
+} 
+ 
+.cont-menu nav a { 
+  display: block; /* Muestra los enlaces en bloque */ 
+  text-decoration: none; /* Elimina el subrayado */ 
+  padding: 20px; /* Espaciado interno de los enlaces */ 
+  color: #c7c7c7; /* Color del texto */ 
+  border-left: 5px solid transparent; /* Borde izquierdo por defecto */ 
+  transition: all 400ms ease; /* Transición suave */ 
+} 
+ 
+.cont-menu nav a:hover {
+border-left: 5px solid #c7c7c7; /* Muestra el borde al pasar el mouse */ 
+  background: #353232; /* Cambia el fondo al pasar el mouse */ 
+} 
+ 
+.btn-menu label { 
+  position: absolute; 
+  right: 40px; /* Alineación a la derecha */ 
+  top: 33px; /* Alineación en la parte superior */ 
+  color: $secondary-color; /* Color del texto */ 
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */ 
+  font-size: 30px; /* Tamaño de la fuente */ 
+  background: transparent; /* Fondo transparente si lo deseas */ 
+  border: none; /* Sin borde */ 
+  padding: 5px; /* Espacio alrededor del texto */ 
+  transition: color 0.3s ease; /* Transición suave para el color */ 
+ 
+  &:hover { 
+    color: lighten($secondary-color, 10%); /* Cambia el color al pasar el mouse */ 
+  } 
+} 
+ 
+.cont-menu label { 
+  position: absolute; 
+  right: -30px; /* Alineación a la derecha */ 
+  top: 5px; /* Alineación en la parte superior */ 
+  color: #333; /* Color del texto */ 
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */ 
+  font-size: 18px; /* Tamaño de la fuente */ 
+  background: transparent; /* Fondo transparente si lo deseas */ 
+  border: none; /* Sin borde */ 
+  padding: 5px; /* Espacio alrededor del texto */ 
+  transition: color 0.3s ease; /* Transición suave para el color */ 
+} 
+ 
+/* Estilos responsivos para pantallas más pequeñas */ 
+@media (max-width: 768px) { 
+  #menu { 
+    flex-direction: column; /* Alinea los elementos en columnas */ 
+  } 
+ 
+  nav ul { 
+    display: none; /* Ocultar los enlaces de navegación en dispositivos móviles */ 
+    flex-direction: column; /* Los enlaces se colocan verticalmente en pantallas pequeñas */ 
+    align-items: center; 
+    width: 100%; 
+    padding: 0; 
+    margin: 0; 
+  } 
+ 
+  #btn-menu { 
+    display: block; /* Mostrar el botón hamburguesa en pantallas pequeñas */ 
+  } 
+ 
+  #btn-menu:checked ~ .container-menu nav ul { 
+    display: flex; /* Mostrar los enlaces de navegación cuando el menú está abierto */ 
+  } 
+ 
+  nav li { 
+    margin: 10px 0; /* Aumenta el espacio vertical entre los enlaces */ 
+    width: 100%; /* Asegura que los enlaces ocupen todo el ancho */ 
+  } 
+ 
+  #logo .logo { 
+    width: 120px; /* Ajuste del tamaño del logo en pantallas pequeñas */ 
+  } 
+ 
+  .container-menu { 
+    position: fixed; /* Cambiar posición para que el menú lateral se quede fijo */ 
+  } 
+ 
+  .btn-menu { 
+    display: none; /* Ocultar el botón de menú en pantallas pequeñas cuando el menú está abierto */ 
+  } 
+}

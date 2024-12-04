@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Encabezado con estilo mejorado */
+header {
+  background: linear-gradient(rgba(0, 102, 153, 0.3), rgba(0, 100, 88, 0.3));
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 300px;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header img {
+  width: 100%; /* Ocupa todo el ancho del header */
+  height: 100%; /* Se ajusta a la altura del header */
+  object-fit: cover; /* Mantiene la proporción de la imagen y la cubre completamente */
+  object-position: center; /* Centra la imagen dentro del header */
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+/* Navegación estilo pestañas */
+nav.tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+nav.tabs button {
+  background-color: #003844;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+nav.tabs button:hover {
+  background-color: #00cc99;
+}
+
+/* Secciones principales */
+.seccion {
+  padding: 40px;
+  background-color: white;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.seccion h2 {
+  color: #003844;
+  margin-bottom: 20px;
+}
+
+.seccion p {
+  color: #555;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+/* Lista de encuestas */
+.lista-encuestas {
+  margin: 20px 0;
+}
+
+.encuesta {
+  background: #f0f0f0;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-start; // Alinea todo el contenido al inicio horizontalmente
+  align-items: center;
+  gap: 15px; // Espacio entre los elementos
+
+  .imagen {
+    width: 80px; /* Ancho fijo */
+    height: 80px; /* Alto fijo */
+    border-radius: 5px; /* Bordes redondeados */
+    overflow: hidden; /* Oculta las partes de la imagen fuera del contenedor */
+    margin-right: 15px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Asegura que la imagen se ajuste al espacio */
+      object-position: center; /* Centra la imagen dentro del contenedor */
+    }
+  }
+
+  .contenido {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; // Acomoda título y descripción en columna
+    align-items: flex-start; // Alinea el contenido de la columna a la izquierda
+    justify-content: flex-start; // Asegura que el contenido quede al inicio
+  }
+
+  .acciones {
+    display: flex; /* Alinea los botones horizontalmente */
+    margin-top: 10px; // Espacio entre botones y texto superior
+    gap: 20px; /* Espaciado entre los botones */
+    align-items: center; /* Centra verticalmente los botones */
+
+    button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+
+      &:first-child {
+        background-color: #2196F3;
+        color: white;
+      }
+
+      &:last-child {
+        background-color: #f44336;
+        color: white;
+      }
+    }
+  }
+}
+
+/* Botones alineados horizontalmente */
+.botones {
+  display: flex; /* Para alinear los botones en línea */
+  justify-content: space-between; /* Espacio uniforme entre los botones */
+  align-items: center; /* Centra verticalmente los botones */
+  gap: 20px; /* Espaciado entre botones */
+  margin-top: 10px; /* Margen superior */
+}
+
+/* Formularios */
+.formulario {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #003844;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background-color: #003844;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    gap: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #00cc99;
+    }
+  }
+}
+
+/* Adaptabilidad móvil */
+@media (max-width: 768px) {
+  nav.tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav.tabs button {
+    margin-bottom: 10px;
+  }
+
+  .encuesta {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .acciones {
+      margin-top: 10px;
+    }
+  }
+}
+
+/* Estilo para la vista previa de imágenes */
+.preview-imagen {
+  margin-top: 15px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+}

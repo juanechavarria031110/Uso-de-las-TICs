@@ -1,0 +1,108 @@
+<body>
+    <header>
+      <img src="encuestas.jpg" alt="Estudiantes haciendo uso de las Tics" />
+    </header>
+    <main>
+      <!-- Pestañas para navegar entre las secciones -->
+      <nav class="tabs">
+        <button (click)="mostrarSeccion('lista')">Lista de Encuestas</button>
+        <button (click)="mostrarSeccion('crear')">Crear Encuesta</button>
+      </nav>
+  
+      <!-- Sección: Lista de Encuestas -->
+      <section id="lista" class="seccion">
+        <h2>Encuestas Disponibles</h2>
+        <div class="lista-encuestas">
+          <div *ngFor="let encuesta of encuestas; let i = index" class="encuesta tarjeta">
+            <div class="imagen">
+              <img
+                [src]="encuesta.imagen || 'assets/IMG/placeholder.png'"
+                alt="Imagen de Encuesta"
+                class="imagen-encuesta"
+              />
+            </div>
+            <div class="informacion">
+              <h3>{{ encuesta.titulo }}</h3>
+              <p>{{ encuesta.descripcion }}</p>
+              <div class="acciones">
+                <button (click)="editarEncuesta(i)">Editar</button>
+                <button (click)="eliminarEncuesta(i)">Eliminar</button>
+              </div>
+            </div>
+          </div>
+          <!-- Mostrar mensaje si no hay encuestas -->
+          <p *ngIf="encuestas.length === 0">No hay encuestas disponibles.</p>
+        </div>
+      </section>
+  
+      <!-- Sección: Crear o Editar Encuesta -->
+      <section id="crear" class="seccion" style="display: none;">
+        <h2>{{ editarIndex !== null ? 'Editar Encuesta' : 'Crear Encuesta' }}</h2>
+        <form class="formulario" (ngSubmit)="guardarTitulo()">
+          <label for="titulo">Título:</label>
+          <input
+            type="text"
+            id="titulo"
+            name="titulo"
+            [(ngModel)]="titulo"
+            placeholder="Título de la encuesta"
+          />
+  
+          <label for="descripcion">Descripción:</label>
+          <textarea
+            id="descripcion"
+            name="descripcion"
+            [(ngModel)]="descripcion"
+            placeholder="Describe la encuesta"
+          ></textarea>
+  
+          <label for="preguntas">Preguntas:</label>
+          <div *ngFor="let pregunta of preguntas; let i = index">
+            <div>
+              <label for="tipo">Tipo:</label>
+              <select [(ngModel)]="preguntas[i].tipo">
+                <option value="seleccion">Selección múltiple</option>
+                <option value="abierta">Pregunta abierta</option>
+              </select>
+            </div>
+  
+            <div>
+              <label for="texto">Pregunta:</label>
+              <input
+                type="text"
+                [(ngModel)]="preguntas[i].texto"
+                placeholder="Pregunta {{ i + 1 }}"
+              />
+            </div>
+  
+            <!-- Opciones solo si es de tipo selección múltiple -->
+            <div *ngIf="preguntas[i].tipo === 'seleccion'">
+              <label for="opciones">Opciones:</label>
+              <div *ngFor="let opcion of preguntas[i].opciones; let j = index">
+                <input
+                  type="text"
+                  [(ngModel)]="preguntas[i].opciones[j]"
+                  placeholder="Opción {{ j + 1 }}"
+                />
+                <button type="button" (click)="eliminarOpcion(i, j)">Eliminar</button>
+              </div>
+              <button type="button" (click)="agregarOpcion(i)">+ Agregar Opción</button>
+            </div>
+  
+            <button type="button" (click)="eliminarPregunta(i)">Eliminar Pregunta</button>
+          </div>
+          <button type="button" (click)="agregarPregunta()">+ Agregar Pregunta</button>
+  
+          <label for="imagen">Imagen:</label>
+          <input type="file" id="imagen" (change)="cargarImagen($event)" />
+          <div class="preview-imagen" *ngIf="imagenPreview">
+            <img [src]="imagenPreview" alt="Vista previa de la imagen" />
+          </div>
+  
+          <button type="submit">{{ editarIndex !== null ? 'Guardar Edición' : 'Guardar' }}</button>
+          <button type="button" (click)="mostrarSeccion('lista')">Cancelar</button>
+        </form>
+      </section>
+    </main>
+  </body>
+  

@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Rufina:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dubiel&display=swap");
+.admin-dashboard {
+  display: flex;
+  min-height: 80vh;
+}
+.admin-dashboard .sidebar {
+  width: 250px;
+  background-color: #002a34;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.admin-dashboard .sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-dashboard .sidebar nav ul li {
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #fff;
+  font-family: "Rufina", serif;
+}
+.admin-dashboard .sidebar nav ul li.active {
+  background-color: #02475e;
+}
+.admin-dashboard .sidebar nav ul li:hover {
+  background-color: #016989;
+}
+.admin-dashboard .sidebar .help-center {
+  padding: 2rem;
+}
+.admin-dashboard .sidebar .help-center button {
+  font-size: 1rem;
+  background-color: #016989;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+.admin-dashboard .sidebar .help-center button:hover {
+  background-color: #02475e;
+}
+.admin-dashboard .welcome-section {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  height: auto; /* Elimina la necesidad de usar height para centrar con flexbox */
+}
+.admin-dashboard .welcome-message {
+  font-size: 4.5rem;
+  color: #003844;
+  margin-bottom: 0.5rem;
+  font-family: "Dubiel", serif;
+}
+.admin-dashboard .description {
+  font-size: 1.5rem;
+  color: #555;
+  font-family: "Dubiel", serif;
+  font-weight: 400;
+}/*# sourceMappingURL=admin.component.css.map */

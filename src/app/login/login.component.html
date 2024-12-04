@@ -1,0 +1,40 @@
+<div class="central">
+    <div id="logo"> 
+        <a routerLink="/"> 
+            <img src="Logo.png" alt="Logo" class="logo"> <!-- Logo de la parte superior izquierda --> 
+        </a> 
+    </div> 
+ 
+    <div id="menu"> 
+        <ul> 
+            <!-- Enlaces de navegación --> 
+            <li><a routerLink="/">Inicio</a></li> 
+            <li><a routerLink="/login">Iniciar sesión</a></li> 
+            <li><a routerLink="/register">Registrarse</a></li> 
+        </ul> 
+    </div> 
+ 
+    <form method="POST" id="form"> 
+         
+        <div class="form"> 
+            <h1>Iniciar sesión</h1> 
+            <div class="grupo"> 
+                <input type="text" name="usuarios" id="users" placeholder="Escriba su usuario"><span class="barra"></span> 
+                <label for="">Usuario</label> 
+            </div> 
+            <div id="mensaje"></div> 
+            <div class="grupo"> 
+                <input type="password" name="clave" id="password" placeholder="Ingrese la contraseña"><span class="barra"></span> 
+                <label for="">Contraseña</label> 
+            </div> 
+            <button type="submit" id="Enviar" name="Enviar">Iniciar sesión</button> 
+            <p class="warnings" id="warnings"></p> 
+ 
+            <!-- Enlace al login --> 
+            <p class="account-text">¿Aún no tienes una cuenta?  
+                <a routerLink="/register" class="login-link">Registrate</a> 
+            </p> 
+        </div> 
+    </form> 
+
+</div>
