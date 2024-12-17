@@ -1,4 +1,4 @@
-$primary-color: #003844; // Color principal basado en la identidad visual de GI2T 
+$primary-color: #003844; 
 $secondary-color: #00cc99; 
 $background-color: #f0f0f0; 
 $text-color: #333; 
@@ -16,7 +16,7 @@ $font-family: 'Arial', sans-serif;
     box-sizing: border-box; 
 } 
  
-body { 
+.central { 
     font-family: "Roboto", sans-serif; 
     width: 100%; 
     background: linear-gradient(to right, hsla(211, 30%, 24%, 0.705), hsla(204, 8%, 76%, 0.705)), url(/fondos.jpeg); 
@@ -31,32 +31,32 @@ body {
  
 header { 
     display: flex; 
-    justify-content: space-between;  // Distribuye el logo y el menú a los lados opuestos 
-    align-items: center;             // Centra verticalmente el logo y el menú 
+    justify-content: space-between;  
+    align-items: center;             
     padding: 20px; 
     position: relative; 
     width: 100%; 
-    z-index: 10;                     // Asegura que el header esté en frente del contenido 
+    z-index: 10;                     
 } 
  
 #logo { 
     position: absolute; 
     top: 10px; 
     left: 10px; 
-    margin-right: auto;  // Alinea el logo a la izquierda 
+    margin-right: auto;  
 } 
  
 #logo img { 
-    height: 75px;        // Ajusta el tamaño del logo 
+    height: 75px;        
     width: auto; 
-    cursor: pointer;    // Cambia el cursor para indicar que es clickeable 
+    cursor: pointer;    
 } 
  
 #menu { 
     position: absolute; 
     top: 10px; 
     right: 10px; 
-    margin-left: auto;  // Alinea el menú a la derecha 
+    margin-left: auto;  
 } 
  
 #menu ul { 
@@ -134,21 +134,21 @@ input:focus {
 } 
  
 label { 
-    color: #2196f3; /* Azul más fuerte */ 
+    color: #2196f3;  
     font-size: 16px; 
     position: absolute; 
     left: 5px; 
     top: 10px; 
     transition: 0.5s ease all; 
     pointer-events: none; 
-    font-weight: bold; /* Poner el texto en negrita */ 
+    font-weight: bold; 
 } 
  
 input:focus ~ label, 
 input:valid ~ label { 
     top: -14px; 
     font-size: 12px; 
-    color: #2196f3; /* Mantener el color azul cuando el campo esté enfocado o sea válido */ 
+    color: #2196f3; 
 } 
  
 .barra { 
@@ -185,12 +185,43 @@ button {
 } 
  
 .warnings { 
-    width: 300px; 
+    width: 100%; 
+    max-width: 300px;  
+    margin: 20px auto;  
+    padding: 15px;     
+    background: #e99370; 
+    color: #9f6000;     
+    border-left: 5px solid #f0ad4e;  
+    border-radius: 8px;  
+    font-family: "Roboto", sans-serif; 
+    font-size: 14px; 
     text-align: center; 
-    margin: auto; 
-    color: #B06AB3; 
-    padding-top: -20px; 
-} 
+    font-weight: bold;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    animation: fadeIn 0.5s ease-in-out;  
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.warnings a { 
+    color: #f0ad4e;   
+    text-decoration: underline; 
+    font-weight: bold; 
+    transition: color 0.3s ease;  
+}
+
+.warnings a:hover { 
+    color: #9f6000;    
+}
  
 .account-text { 
     text-align: center; 
@@ -198,7 +229,7 @@ button {
     color:var(--colorTextos); 
     font-size: 16px; 
     margin-top: 20px; 
-    font-weight: bold; /* Poner el texto en negrita */ 
+    font-weight: bold; 
 } 
  
 .login-link { 
@@ -213,4 +244,5 @@ button {
         color: #000; 
         text-decoration: underline; 
     } 
+    
 }

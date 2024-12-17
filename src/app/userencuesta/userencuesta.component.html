@@ -1,0 +1,47 @@
+
+    <header>
+      <img src="encuesta.jpg" alt="Estudiantes haciendo uso de las Tics" />
+    </header>
+    <main>
+      <!-- Lista de Encuestas -->
+      <section id="lista" class="seccion" *ngIf="seccionActiva === 'lista'">
+        <h2>Encuestas Disponibles</h2>
+        <div class="lista-encuestas">
+          <div *ngFor="let encuesta of encuestas; let i = index" class="encuesta tarjeta">
+            <div class="imagen">
+              <img
+                [src]="encuesta.imagen || 'assets/IMG/placeholder.png'"
+                alt="Imagen de Encuesta"
+                class="imagen-encuesta"
+              />
+            </div>
+            <div class="informacion">
+              <h3>{{ encuesta.titulo }}</h3>
+              <p>{{ encuesta.descripcion }}</p>
+              <div class="acciones">
+                <!-- Botón para ver encuesta -->
+                <button (click)="verEncuesta(i)" class="btn-azul">Ver</button>
+                <!-- Botón para generar link de encuesta -->
+                <button (click)="generarLink(i)" class="link">Generar Link</button>
+              </div>
+            </div>
+          </div>
+          <p *ngIf="encuestas.length === 0">No hay encuestas disponibles.</p>
+        </div>
+      </section>
+  
+      <section id="detalles" class="seccion" *ngIf="seccionActiva === 'detalles'">
+        <h2>{{ encuestaSeleccionada?.titulo }}</h2>
+        <p>{{ encuestaSeleccionada?.descripcion }}</p>
+        <div *ngFor="let pregunta of encuestaSeleccionada?.preguntas; let i = index">
+          <h3>{{ pregunta.texto }}</h3>
+          <div *ngIf="pregunta.tipo === 'seleccion'">
+            <ul>
+              <li *ngFor="let opcion of pregunta.opciones">{{ opcion }}</li>
+            </ul>
+          </div>
+          <p *ngIf="pregunta.tipo === 'abierta'">Respuesta libre.</p>
+        </div>
+        <button (click)="volverALaLista()" class="volver">Volver</button>
+      </section>
+    </main>

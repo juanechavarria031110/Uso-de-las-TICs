@@ -1,37 +1,154 @@
 <div class="admin-dashboard">
+  <div class="sidebar">
+    <nav>
+      <ul>
+        <li (click)="loadSurveys()">Total Encuestas</li>
+        <li class="active" (click)="loadUsers()">Total Usuarios</li>
+        <li class="active" (click)="loadSchools()">Total Colegios</li> 
+        <li class="active">Analisis</li>
+      </ul>
+    </nav>
 
-
-    <div class="sidebar">
-
-      <nav>
-        <ul>
-          <li class="active">Busqueda</li>
-          <li> Crear Encuestas</li>
-          <li class="active">Mis Encuestas</li>
-          <li>Total Encuestas</li>
-          <li class="active">Total Usuarios</li>
-          <li>Analisis</li>
-          <li class="active">Configuraciones</li>
-
-        </ul>
-      </nav>
-      <div class="help-center">
-        <button>Centro de Ayuda</button>
-      </div>
-    </div>
-  
-
-    
-    <div class="main-content">
-
-  
-      <section class="welcome-section">
-        <h1 class="welcome-message">Bienvenido Administrador</h1>
-        <p class="description">
-          Aquí puedes gestionar usuarios, encuestas y funcionalidades adicionales.
-        </p>
-      </section>
-  
+    <div class="help-center">
+      <button>Centro de Ayuda</button>
     </div>
   </div>
-  
+
+  <div class="main-content">
+    <!-- Sección de Bienvenida -->
+    <section class="welcome-section" *ngIf="showWelcome">
+      <h1 class="welcome-message">Bienvenido {{ currentUser?.usuario || 'Administrador' }}</h1>
+      <p class="description">
+        Aquí puedes gestionar usuarios, encuestas y funcionalidades adicionales.
+      </p>
+    </section>
+
+    <!-- CRUD de Encuestas -->
+    <div class="surveys-crud" *ngIf="showCrud && currentTab === 'encuestas'">
+      <h2>Gestión de Encuestas</h2>
+      <div class="survey-form">
+        <input [(ngModel)]="newSurvey.nombre" placeholder="Nombre de la encuesta" />
+        <input [(ngModel)]="newSurvey.descripcion" placeholder="Descripción de la encuesta" />
+        
+        <div *ngIf="errorMessage" class="error-message" style="color: red; font-size: 1rem;">
+          <p>{{ errorMessage }}</p>
+        </div>
+
+        <button (click)="newSurvey.id ? saveEditedSurvey() : addSurvey()" [disabled]="!newSurvey.nombre || !newSurvey.descripcion">
+          {{ newSurvey.id ? 'Guardar Cambios' : 'Agregar Encuesta' }}
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Imagen</th>
+            <th>Preguntas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let survey of encuestas">
+            <td>{{ survey.id }}</td>
+            <td>{{ survey.titulo }}</td>
+            <td>{{ survey.descripcion }}</td>
+            <td><img [src]="survey.imagen" alt="Imagen Encuesta" width="100" /></td>
+            <td>{{ survey.preguntas.join(', ') }}</td>
+            <td>
+              <button (click)="editSurvey(survey.id)" class="Editar">Editar</button>
+              <button (click)="deleteSurvey(survey.id)" class="Eliminar">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CRUD de Usuarios -->
+    <div class="users-crud" *ngIf="showCrud && currentTab === 'usuarios'">
+      <h2>Gestión de Usuarios</h2>
+      <div class="user-form">
+        <input [(ngModel)]="newUser.usuario" placeholder="Usuario" />
+        <select [(ngModel)]="newUser.tipoU">
+          <option value="" disabled selected>Selecciona el tipo de usuario</option>
+          <option value="admin">Admin</option>
+          <option value="universitario">Universitario</option>
+        </select>
+        <input [(ngModel)]="newUser.password" placeholder="Contraseña" type="password" />
+        
+        <div *ngIf="errorMessage" class="error-message" style="color: red; font-size: 1rem;">
+          <p>{{ errorMessage }}</p>
+        </div>
+
+        <button (click)="newUser.id ? saveEditedUser() : addUser()" [disabled]="!newUser.usuario || !newUser.tipoU || !newUser.password">
+          {{ newUser.id ? 'Guardar Cambios' : 'Agregar Usuario' }}
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Tipo de Usuario</th>
+            <th>Contraseña</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of usuarios">
+            <td>{{ user.id }}</td>
+            <td>{{ user.usuario }}</td>
+            <td>{{ user.tipoU }}</td>
+            <td>{{ user.password }}</td>
+            <td>
+              <button (click)="editUser(user.id)" class="Editar">Editar</button>
+              <button (click)="deleteUser(user.id)" class="Eliminar">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CRUD de Colegios -->
+    <div class="users-crud" *ngIf="showCrud && currentTab === 'colegios'">
+      <h2>Gestión de Colegios</h2>
+      <div class="user-form">
+        <input [(ngModel)]="newSchool.nombre" placeholder="Nombre de colegio" />
+        <input [(ngModel)]="newSchool.ciudad" placeholder="Ciudad del colegio" />
+        <input [(ngModel)]="newSchool.codigoDane" placeholder="Código DANE" />
+        
+        <div *ngIf="errorMessage" class="error-message" style="color: red; font-size: 1rem;">
+          <p>{{ errorMessage }}</p>
+        </div>
+
+        <button (click)="newSchool.id ? saveEditedSchool() : addSchool()" [disabled]="!newSchool.nombre || !newSchool.ciudad || !newSchool.codigoDane">
+          {{ newSchool.id ? 'Guardar Cambios' : 'Agregar Colegio' }}
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre del Colegio</th>
+            <th>Ciudad</th>
+            <th>Código DANE</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let school of colegios">
+            <td>{{ school.id }}</td>
+            <td>{{ school.nombre }}</td>
+            <td>{{ school.ciudad }}</td>
+            <td>{{ school.codigoDane }}</td>
+            <td>
+              <button (click)="editSchool(school.id)" class="Editar">Editar</button>
+              <button (click)="deleteSchool(school.id)" class="Eliminar">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

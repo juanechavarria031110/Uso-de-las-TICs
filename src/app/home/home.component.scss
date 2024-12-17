@@ -1,5 +1,5 @@
 // Variables de color y tipografía
-$primary-color: #003844; // Color principal basado en la identidad visual de GI2T
+$primary-color: #003844; 
 $secondary-color: #00cc99;
 $background-color: #f0f0f0;
 $text-color: #333;
@@ -21,18 +21,18 @@ body {
 }
 
 // Encabezado (Header) con imagen de fondo y gradiente
-header {
+#imagen {
     background: linear-gradient(
         rgba(0, 102, 153, 0.3),  // Color primario con opacidad (30%)
         rgba(0, 100, 88, 0.3)   // Color secundario con opacidad (30%)
     ),
-    url('/ballena.jpeg');  // Ruta correcta si la imagen está en la carpeta public
-    background-size: cover;   // Para que la imagen cubra el espacio completo del header
-    background-position: center; // Centra la imagen
+    url('/ballena.jpeg');  
+    background-size: cover;   
+    background-position: center; 
     padding: 20px;
     text-align: center;
     position: relative;
-    height: 420px;  // Altura del header
+    height: 420px;  
 
     nav {
         ul {
@@ -53,21 +53,33 @@ header {
                 }
             }
         }
-    }
-
-    // Imagen destacada dentro del header (si es necesario)
-    .imagen-destacada {
+    }  .imagen-destacada {
         position: relative;
         overflow: hidden;
         margin-top: 20px;
         text-align: center;
 
         img {
-            max-width: 60%;   // Ajuste de tamaño para que la imagen no ocupe todo el ancho
-            height: auto;
+            max-width: 100%; // Imagen se ajusta al contenedor
+            height: auto; // Mantiene proporciones
             border-radius: 15px; // Suaviza los bordes de la imagen
             -webkit-mask-image: radial-gradient(circle, white 80%, transparent 100%);
             mask-image: radial-gradient(circle, white 80%, transparent 100%);
+
+            // Estilos responsivos específicos para la imagen de litoral
+            @media (max-width: 1024px) {
+                max-width: 90%;
+            }
+
+            @media (max-width: 768px) {
+                max-width: 80%;
+            }
+
+            @media (max-width: 480px) {
+                max-width: 70%;
+                margin: 0 auto; // Centra la imagen
+                display: block;
+            }
         }
     }
 }
@@ -194,11 +206,11 @@ section {
     }
 }
   
-  router-outlet {
-    margin-top: 20px; /* Espacio entre el menú de navegación y el contenido */
-  }
+router-outlet {
+    margin-top: 20px; 
+}
 
-  
+
 // Estilos responsivos para dispositivos móviles
 @media (max-width: 768px) {
     nav ul li {

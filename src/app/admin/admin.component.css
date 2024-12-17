@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Rufina:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dubiel&display=swap");
 .admin-dashboard {
   display: flex;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 .admin-dashboard .sidebar {
   width: 250px;
@@ -19,8 +21,9 @@
   padding: 1rem;
   text-align: center;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #fff;
+  font-family: "Rufina", serif;
 }
 .admin-dashboard .sidebar nav ul li.active {
   background-color: #02475e;
@@ -29,14 +32,15 @@
   background-color: #016989;
 }
 .admin-dashboard .sidebar .help-center {
-  padding: 1rem;
+  padding: 2rem;
 }
 .admin-dashboard .sidebar .help-center button {
+  font-size: 1rem;
   background-color: #016989;
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   width: 100%;
 }
@@ -45,46 +49,140 @@
 }
 .admin-dashboard .main-content {
   flex: 1;
-  padding: 2rem;
-}
-.admin-dashboard .main-content header .imagen-destacada img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 2rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .admin-dashboard .main-content .welcome-section {
   text-align: center;
-  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 800px;
 }
-.admin-dashboard .main-content .welcome-section .welcome-message {
-  font-size: 2rem;
-  color: #02475e;
+.admin-dashboard .main-content .welcome-message {
+  font-size: 4.5rem;
+  color: #003844;
   margin-bottom: 0.5rem;
+  font-family: "Dubiel", serif;
 }
-.admin-dashboard .main-content .welcome-section .description {
-  font-size: 1.2rem;
-  color: #555;
-}
-.admin-dashboard .main-content .dashboard-section h2 {
+.admin-dashboard .main-content .description {
   font-size: 1.5rem;
-  color: #02475e;
-  margin-bottom: 1rem;
+  color: #555;
+  font-family: "Dubiel", serif;
+  font-weight: 400;
 }
-.admin-dashboard .main-content .dashboard-section .card-container {
-  display: flex;
-  gap: 1rem;
-}
-.admin-dashboard .main-content .dashboard-section .card-container .card {
-  flex: 1;
+.admin-dashboard .main-content .users-crud,
+.admin-dashboard .main-content .surveys-crud {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 20px;
+  padding: 20px;
   background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.admin-dashboard .main-content .dashboard-section .card-container .card h3 {
-  font-size: 1.2rem;
-  color: #333;
-  margin: 0;
+.admin-dashboard .main-content .survey-form,
+.admin-dashboard .main-content .user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+.admin-dashboard .main-content .survey-form input,
+.admin-dashboard .main-content .user-form input,
+.admin-dashboard .main-content .user-form select {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.admin-dashboard .main-content .survey-form select,
+.admin-dashboard .main-content .user-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.admin-dashboard .main-content .survey-form select option:first-child,
+.admin-dashboard .main-content .user-form select option:first-child {
+  color: #888;
+}
+.admin-dashboard .main-content .survey-form button,
+.admin-dashboard .main-content .user-form button {
+  padding: 12px 20px;
+  background-color: #016989;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 200px;
+  align-self: center;
+}
+.admin-dashboard .main-content .survey-form button:hover,
+.admin-dashboard .main-content .user-form button:hover {
+  background-color: #02475e;
+}
+.admin-dashboard .main-content .survey-form .error-message,
+.admin-dashboard .main-content .user-form .error-message {
+  color: red;
+  font-size: 1rem;
+}
+.admin-dashboard .main-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.admin-dashboard .main-content table, .admin-dashboard .main-content th, .admin-dashboard .main-content td {
+  border: 1px solid #ddd;
+}
+.admin-dashboard .main-content th, .admin-dashboard .main-content td {
+  padding: 10px;
+  text-align: center;
+}
+.admin-dashboard .main-content th {
+  background-color: #02475e;
+  color: white;
+}
+.admin-dashboard .main-content td {
+  background-color: #f9f9f9;
+}
+.admin-dashboard .main-content button {
+  padding: 5px 10px;
+  margin: 5px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.admin-dashboard .main-content button:hover {
+  background-color: #02475e;
+}
+.admin-dashboard .main-content .Editar {
+  background-color: #28a745;
+}
+.admin-dashboard .main-content .Editar:hover {
+  background-color: #218838;
+}
+.admin-dashboard .main-content .Eliminar {
+  background-color: #dc3545;
+}
+.admin-dashboard .main-content .Eliminar:hover {
+  background-color: #c82333;
 }/*# sourceMappingURL=admin.component.css.map */

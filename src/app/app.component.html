@@ -1,39 +1,38 @@
-<!-- Solo muestra el menú si showHeaderFooter es true --> 
 <header id="menu" *ngIf="showHeaderFooter"> 
   <div id="logo"> 
     <a routerLink="/"> 
       <img src="Logo.png" alt="Logo" class="logo"> <!-- Logo de la parte superior izquierda --> 
     </a> 
   </div> 
+
   <nav> 
     <ul> 
       <li> 
-        <a routerLink="/">Inicio</a> 
-        <a routerLink="/login">Iniciar sesión</a> 
-        <a routerLink="/register">Registrarse</a> 
+        <a routerLink="/">Inicio</a>
+
+        <!-- Opción Encuesta para todos los usuarios autenticados -->
+        <a routerLink="/userencuesta" *ngIf="isAuthenticated && !isAdmin">Encuesta</a>
+        
+        <!-- Mostrar Encuestas solo si es un admin -->
+        <a *ngIf="isAuthenticated && isAdmin" routerLink="/encuestas">Encuestas</a>
+        
+        <!-- Mostrar Admin solo si es un admin -->
+        <a *ngIf="isAuthenticated && isAdmin" routerLink="/admin">Admin</a> 
+
+        <!-- Mostrar Iniciar sesión y Registrarse si no están autenticados -->
+        <a *ngIf="!isAuthenticated" routerLink="/login">Iniciar sesión</a> 
+        <a *ngIf="!isAuthenticated" routerLink="/register">Registrarse</a> 
+
+        <!-- Mostrar Cerrar sesión si están autenticados -->
+        <a *ngIf="isAuthenticated" (click)="logout()">Cerrar sesión</a> 
       </li>  
     </ul> 
-  </nav> 
-  <div class="btn-menu"> 
-    <label for="btn-menu">☰</label> <!-- Botón para abrir el menú lateral --> 
-  </div> 
-</header> 
- 
+  </nav>  
+</header>
+
 <router-outlet></router-outlet> 
- 
-<!-- Menú lateral --> 
-<input type="checkbox" id="btn-menu"> 
-<div class="container-menu"> 
-  <div class="cont-menu"> 
-    <nav> 
-      <a routerLink="/metodologias">Metodologías</a> <!-- Enlace a Metodologías --> 
-      <a routerLink="/encuestas">Encuestas</a> <!-- Enlace a Encuestas --> 
-    </nav> 
-    <label for="btn-menu">✖️</label> <!-- Botón para cerrar el menú lateral --> 
-  </div> 
-</div> 
- 
-<!-- Solo muestra el footer si showHeaderFooter es true --> 
+
+<!-- Solo muestra el footer si showHeaderFooter es true y no está en login ni en register -->
 <footer *ngIf="showHeaderFooter"> 
   <div class="logos"> 
     <a href="https://www.gi2t.org" target="_blank"> 
@@ -41,7 +40,7 @@
     </a> 
     <a> 
       <img src="ing.png" alt="Logo Ingeniería de Sistemas"> 
-    </a> 
+    </a>
     <a href="http://www.unipacifico.edu.co" target="_blank"> 
       <img src="unpa.png" alt="Logo Universidad del Pacífico"> 
     </a> 

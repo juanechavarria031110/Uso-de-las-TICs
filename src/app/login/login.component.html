@@ -1,40 +1,62 @@
-<body> 
- 
-    <div id="logo"> 
-        <a routerLink="/"> 
-            <img src="Logo.png" alt="Logo" class="logo"> <!-- Logo de la parte superior izquierda --> 
-        </a> 
-    </div> 
- 
-    <div id="menu"> 
-        <ul> 
-            <!-- Enlaces de navegación --> 
-            <li><a routerLink="/">Inicio</a></li> 
-            <li><a routerLink="/login">Iniciar sesión</a></li> 
-            <li><a routerLink="/register">Registrarse</a></li> 
-        </ul> 
-    </div> 
- 
-    <form method="POST" id="form"> 
-         
-        <div class="form"> 
-            <h1>Iniciar sesión</h1> 
-            <div class="grupo"> 
-                <input type="text" name="usuarios" id="users" placeholder="Escriba su usuario"><span class="barra"></span> 
-                <label for="">Usuario</label> 
-            </div> 
-            <div id="mensaje"></div> 
-            <div class="grupo"> 
-                <input type="password" name="clave" id="password" placeholder="Ingrese la contraseña"><span class="barra"></span> 
-                <label for="">Contraseña</label> 
-            </div> 
-            <button type="submit" id="Enviar" name="Enviar">Iniciar sesión</button> 
-            <p class="warnings" id="warnings"></p> 
- 
-            <!-- Enlace al login --> 
-            <p class="account-text">¿Aún no tienes una cuenta?  
-                <a routerLink="/register" class="login-link">Registrate</a> 
-            </p> 
-        </div> 
-    </form> 
-</body>
+<div class="central">
+  <div id="logo">
+    <a routerLink="/">
+      <img src="Logo.png" alt="Logo" class="logo"> 
+    </a>
+  </div>
+
+  <div id="menu">
+    <ul>
+      <!-- Enlaces de navegación -->
+      <li><a routerLink="/">Inicio</a></li>
+      <li><a routerLink="/login">Iniciar sesión</a></li>
+      <li><a routerLink="/register">Registrarse</a></li>
+    </ul>
+  </div>
+  
+    <!-- Formulario de login -->
+    <form (ngSubmit)="onLogin()" id="form"> 
+      <div class="form">
+        <h1>Iniciar sesión</h1>
+  
+        <!-- Campo de Usuario -->
+        <div class="grupo">
+          <input 
+            type="text" 
+            [(ngModel)]="usuario" 
+            name="usuarios" 
+            id="users" 
+            required 
+          />
+          <span class="barra"></span>
+          <label for="users">Usuario</label>
+        </div>
+  
+        <!-- Campo de Contraseña -->
+        <div class="grupo">
+          <input 
+            type="password" 
+            [(ngModel)]="password" 
+            name="clave" 
+            id="password" 
+            required 
+          />
+          <span class="barra"></span>
+          <label for="password">Contraseña</label>
+        </div>
+  
+        <!-- Botón de Enviar -->
+        <button type="submit" id="Enviar" name="Enviar">Iniciar sesión</button>
+  
+        <!-- Mensaje de Advertencia -->
+        <p class="warnings" *ngIf="warnings">{{ warnings }}</p>
+  
+        <!-- Enlace para registrar cuenta -->
+        <p class="account-text">¿Aún no tienes una cuenta?
+          <a routerLink="/register" class="login-link">Regístrate</a>
+        </p>
+      </div>
+    </form>
+  
+</div>
+  
